@@ -53,7 +53,7 @@ function aplanar (muroAAplanar, callback) {
     console.log('Iniciando el aplanado...')
     setTimeout(() => {
         let error = null
-        muroAAplanar.estaAplanado = true
+        muroAAplanar.estaAplanado = false
         if(muroAAplanar.estaAplanado === false) {
             error = "No se puedo aplanar"
         }
@@ -77,33 +77,49 @@ function pintar (muroApintar, callback) {
 
 construir(muro, (error, muroConstruido) => {
     if(error) {
-        console.error('Error: ', error)
+        console.log('Error: ', error)
         return
     }
+    // 
     console.log('MuroConstruido: ', muroConstruido)
-    aplanar(muroConstruido, (errorAplanar, muroAplanado) => {
+    aplanar(muro, (errorAplanar, muroAplanado) => {
         if(errorAplanar) {
-            console.error('Error: ', errorAplanar)
+            console.log('Error: ', error)
             return
         }
-        console.log('muroAplanado: ', muroAplanado)
-        pintar(muroAplanado, (errorPintar, muroPintado) => {
-
-            if(errorPintar) {
-                console.error('Error: ', errorPintar)
-                return
-            }
-            console.log('MuroPintado: ', muroPintado)
-        })
+        console.log('Muro aplanado: ', muroAplanado)
     })
 })
 
-// Callback hell
+// falsy and truthy
 
-// aplanar(muro, (error, muroApalanado) => {
-//     console.log('MuroAplanado: ', muroApalanado)
-// })
+// 
+// falsy -> al momento de evealuarlos o cuando hacermos preguntas logicas evaluan a false
 
+// 0 -> false
+// '' -> false
+// null -> false
+// undefined -> false
+
+// if(0) {
+//     console.log('Truthy')
+// }else {
+//     console.log('El cero es un falsy')
+// }
+
+// console.log('Falsy----')
+// console.log('Cero: ', Boolean(0))
+// console.log('null: ', Boolean(null))
+// console.log('undefined: ', Boolean(undefined))
+// console.log('cadena vacia: ', Boolean(''))
+
+// truthy
+// console.log('Truthy----')
+
+// console.log('cualquier numero: ', Boolean(12))
+// console.log('cualquier cadena: ', Boolean('Holis'))
+// console.log('arreglos: ', Boolean([]))
+// console.log('objetos ', Boolean({}))
 
 
 /*
