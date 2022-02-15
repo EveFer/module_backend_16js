@@ -50,17 +50,20 @@ function construir (muroAConstruir, callback) {
 }
 
 function aplanar (muroAAplanar, callback) {
+    console.log('Iniciando el aplanado...')
     setTimeout(() => {
         let error = null
-        muroAAplanar.estaAplanado = false
+        muroAAplanar.estaAplanado = true
         if(muroAAplanar.estaAplanado === false) {
             error = "No se puedo aplanar"
         }
         callback(error, muroAAplanar)
-    }, 3000)
+    }, 2000)
 }
 
+
 function pintar (muroApintar, callback) {
+    console.log('iniciando el pintado...')
     setTimeout(() => {
         let error = null
         muroApintar.estaPintado = true
@@ -68,7 +71,7 @@ function pintar (muroApintar, callback) {
             error = "No se puedo pintar"
         }
         callback(error, muroApintar)
-    }, 3000)
+    }, 1000)
 }
 
 
@@ -95,6 +98,14 @@ construir(muro, (error, muroConstruido) => {
     })
 })
 
+// Callback hell
+
+// aplanar(muro, (error, muroApalanado) => {
+//     console.log('MuroAplanado: ', muroApalanado)
+// })
+
+
+
 /*
 Proceso inscripción a kodemia
 
@@ -104,7 +115,3 @@ Proceso inscripción a kodemia
 4.- Asistir a clases
 
 */
-
-
-
-
